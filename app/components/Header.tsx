@@ -1,31 +1,58 @@
+"use client"
+
 import Image from 'next/image'
-import React from 'react'
+import logo from '../../public/images/logo.png'
+import type { CustomFlowbiteTheme } from "flowbite-react";
+import { Button, Flowbite, Navbar } from "flowbite-react";
+
+const navbarTheme: CustomFlowbiteTheme = {
+  navbar: {
+    root: {
+      base: "text-white flex flex-nowrap items-center justify-between mt-9 tablet:flex-nowrap px-2 py-2.5 sm:px-4",
+    },
+    link: {
+      base: "font-bold hover:text-green",
+      active: {
+        on: "text-green",
+        off: ""
+      }
+    }
+  },
+  button: {
+    base: "ml-3 h-54 px-5 rounded-full font-bold uppercase",
+    color: {
+      green: "bg-green rounded-lg-full"
+    }
+  }
+};
 
 export default function Header() {
+
   return (
-    <header>
-      <nav className="navbar">
-          <a href="#page-top">
-            <Image
-              alt="Logo"
-              src="images/logo.png"
-              width={100} 
-              height={100}
-            />
-          </a>
-          <ul className="navbar-nav">
-              <li className="nav-item"><a className="nav-link nav-link-active" href="#hero">Home</a></li>
-              <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
-              <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
-              <li className="nav-item"><a className="nav-link" href="#portfolio">Portfolio</a></li>
-              <li className="nav-item"><a className="nav-link" href="#portfolio">Activites</a></li>
-              <li className="nav-item"><a className="nav-link" href="#portfolio">Programs</a></li>
-              <li className="nav-item"><a className="nav-link" href="#portfolio">Consult Us</a></li>
-              <li className="nav-item"><a className="nav-link" href="#portfolio">Articles</a></li>
-              <li className="nav-item"><a className="nav-link" href="#portfolio">Shop</a></li>
-              <li className="nav-item btn ml-1"><a className="nav-link text-uppercase" href="#contact us">Contact US</a></li>
-          </ul>
-        </nav>
-      </header>
+    <Flowbite  theme={{theme: navbarTheme}}>
+      <Navbar fluid>
+        <Navbar.Brand href="/">
+          <Image
+            alt="Logo"
+            src={logo}
+            width={218} 
+            height={54}
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse>
+          <Navbar.Link href="#" active>Home</Navbar.Link>
+          <Navbar.Link href="#">About</Navbar.Link>
+          <Navbar.Link href="#">Services</Navbar.Link>
+          <Navbar.Link href="#">Portfolio</Navbar.Link>
+          <Navbar.Link href="#">Activites</Navbar.Link>
+          <Navbar.Link href="#">Programs</Navbar.Link>
+          <Navbar.Link href="#">Consult Us</Navbar.Link>
+          <Navbar.Link href="#">Articles</Navbar.Link>
+          <Navbar.Link href="#">Shop</Navbar.Link>
+        </Navbar.Collapse>
+        <Button color="green">Contact US</Button>
+      </Navbar>
+    </Flowbite>
   )
 }
